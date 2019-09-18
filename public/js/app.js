@@ -2124,6 +2124,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+Vue.use(vue_toasted__WEBPACK_IMPORTED_MODULE_0___default.a, {
+  duration: 3000,
+  position: "top-center",
+  theme: "toasted-primary"
+});
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["employees"],
   data: function data() {
@@ -2176,9 +2181,11 @@ __webpack_require__.r(__webpack_exports__);
           _this.data.push(response.data.data);
         }
 
+        _this.clearVal();
+
         Vue.toasted.show(response.data.message);
       })["catch"](function (error) {
-        console.log("Error happened! Please contact the support team");
+        Vue.toasted.show("Error happened! Please contact the support team");
       });
     },
     deleteItem: function deleteItem() {
@@ -2189,7 +2196,7 @@ __webpack_require__.r(__webpack_exports__);
 
         Vue.toasted.show(response.data.message);
       })["catch"](function (error) {
-        console.log("Error happened! Please contact the support team");
+        Vue.toasted.show("Error happened! Please contact the support team");
       });
     },
     editItem: function editItem() {
@@ -2214,7 +2221,7 @@ __webpack_require__.r(__webpack_exports__);
 
         Vue.toasted.show(response.data.message);
       })["catch"](function (error) {
-        console.log("Error happened! Please contact the support team");
+        Vue.toasted.show("Error happened! Please contact the support team");
       });
     }
   }
@@ -32921,11 +32928,6 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 
-Vue.use(vue_toasted__WEBPACK_IMPORTED_MODULE_0___default.a, {
-  duration: 3000,
-  position: "top-center",
-  theme: "toasted-primary"
-});
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

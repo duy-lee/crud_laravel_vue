@@ -31,7 +31,7 @@ class UpdateEmployeeRequest extends FormRequest
             'date_of_birth' => 'required',
             'address' => 'required',
             'email' => 'required|email|unique:employees,email,' . $this->route('employee'),
-            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|unique:employees,phone,' . $this->route('employee'),
+            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|max:10|unique:employees,phone,' . $this->route('employee'),
         ];
     }
 

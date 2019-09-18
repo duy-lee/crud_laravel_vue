@@ -282,7 +282,12 @@
 </template>
 
 <script>
-import Toasted from 'vue-toasted'
+import Toasted from 'vue-toasted';
+Vue.use(Toasted, {
+    duration: 3000,
+    position: "top-center",
+    theme: "toasted-primary",
+  });
 
 export default {
   props: ["employees"],
@@ -343,10 +348,11 @@ export default {
           if(response.data.message.match('Successfully created!')){
             _this.data.push(response.data.data);
           }
+          _this.clearVal();
           Vue.toasted.show(response.data.message);
         })
         .catch(function(error) {
-          console.log("Error happened! Please contact the support team");
+          Vue.toasted.show("Error happened! Please contact the support team");
         });
     },
 
@@ -359,7 +365,7 @@ export default {
           Vue.toasted.show(response.data.message);
         })
         .catch(function(error) {
-          console.log("Error happened! Please contact the support team");
+          Vue.toasted.show("Error happened! Please contact the support team");
         });
     },
 
@@ -388,7 +394,7 @@ export default {
           Vue.toasted.show(response.data.message);
         })
         .catch(function(error) {
-          console.log("Error happened! Please contact the support team");
+          Vue.toasted.show("Error happened! Please contact the support team");
         });
     }
   }
