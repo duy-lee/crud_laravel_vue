@@ -282,6 +282,8 @@
 </template>
 
 <script>
+import Toasted from 'vue-toasted'
+
 export default {
   props: ["employees"],
 
@@ -338,10 +340,10 @@ export default {
           phone: _this.e_phone
         })
         .then(function(response) {
-          if(response.data.message.match('Successfully updated!')){
+          if(response.data.message.match('Successfully created!')){
             _this.data.push(response.data.data);
           }
-          console.log(response.data.message);
+          Vue.toasted.show(response.data.message);
         })
         .catch(function(error) {
           console.log("Error happened! Please contact the support team");
@@ -354,7 +356,7 @@ export default {
         .delete("employees/" + _this.e_id)
         .then(function(response) {
           _this.data.splice(_this.index, 1);
-          console.log(response.data.message);
+          Vue.toasted.show(response.data.message);
         })
         .catch(function(error) {
           console.log("Error happened! Please contact the support team");
@@ -373,7 +375,7 @@ export default {
           phone: _this.e_phone
         })
         .then(function(response) {
-          console.log(response);
+
           if(response.data.message.match('Successfully updated!')){
             _this.data[_this.index].name = _this.e_name;
             _this.data[_this.index].gender = _this.e_gender;
@@ -382,7 +384,8 @@ export default {
             _this.data[_this.index].email = _this.e_email;
             _this.data[_this.index].phone = _this.e_phone;
           }
-          console.log(response.data.message);
+
+          Vue.toasted.show(response.data.message);
         })
         .catch(function(error) {
           console.log("Error happened! Please contact the support team");

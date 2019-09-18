@@ -8,6 +8,12 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import Toasted from 'vue-toasted';
+Vue.use(Toasted, {
+    duration: 3000,
+    position: "top-center",
+    theme: "toasted-primary",
+  })
 
 /**
  * The following block of code may be used to automatically register your
